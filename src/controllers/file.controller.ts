@@ -1,4 +1,4 @@
-import { Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express/multer';
 import { FileService } from '../services/file.service';
 
@@ -7,7 +7,7 @@ export class FileController {
   constructor(private readonly fileService: FileService) {}
 
   @Post('/file/upload')
-  @UseInterceptors(FileInterceptor('file', { dest: './src/files/'}))
+  @UseInterceptors(FileInterceptor('file'))
   fileUpload(@UploadedFile() file) {
     try {
         if (!file) {

@@ -1,25 +1,19 @@
 import { Injectable } from '@nestjs/common';
-import * as fs from 'fs';
 
 @Injectable()
 export class FileService {
   fileUpload(file) {
-    const isGeoJSON = this.isGeoJSON(file);
+    const content = file.buffer.toString();
+    const isGeoJSON = this.isGeoJSON(content);
     if (!isGeoJSON) {
         throw new Error('Invalid GeoJSON format');
     }
 
-    return file;
+    return JSON.parse(content);
   }
 
-  isGeoJSON(file): boolean {
-    const content = fs.readFileSync(file.path, 'utf8');
+  isGeoJSON(content: string): boolean {
     const data = JSON.parse(content);
-    
-    if (data.type === 'FeatureCollection' && Array.isArray(data.features)) {
-        return true;
-    } else {
-        return false;
-    }
+    return (data.type === 'FeatureCollection' && Array.isArray(data.features)) ? true : false;
   }
 }
