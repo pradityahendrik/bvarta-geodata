@@ -40,8 +40,13 @@ $ npm run migration:create --name=migration-file-name
 ```
 
 ``` bash
-# Run Migrations
-$ npm run migrate
+# Run Migrations Up
+$ npm run migrate:up
+```
+
+``` bash
+# Run Migrations Down
+$ npm run migrate:down
 ```
 
 ## Running the app
