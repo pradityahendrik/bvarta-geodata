@@ -4,11 +4,24 @@ import { AppController } from './controllers/app.controller';
 import { FileController } from './controllers/file.controller';
 import { AppService } from './services/app.service';
 import { FileService } from './services/file.service';
-import config from '../database/config';
+import { GeoJSON } from './entities/geojson.entity'
 
 @Module({
   imports: [   
-    TypeOrmModule.forRoot(config),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'admin',
+      password: 'admin',
+      database: 'bvarta',
+      entities: [GeoJSON],
+      logging: true,
+      synchronize: false,
+      migrationsTableName: 'typeorm_migrations',
+      migrationsRun: false,
+    }),
+    TypeOrmModule.forFeature([GeoJSON])
   ],
   controllers: [AppController, FileController],
   providers: [AppService, FileService],
