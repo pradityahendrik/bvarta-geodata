@@ -1,12 +1,15 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'geojson' })
-export class GeoJSON {
+@Entity({ name: 'user' })
+export class User {
   @PrimaryGeneratedColumn()
   id: string;
 
-  @Column({ type: 'jsonb' })
-  content: Record<string, any>; 
+  @Column()
+  username: string;
+
+  @Column()
+  password: string;
 
   @Column()
   created_at: Date;
