@@ -8,7 +8,10 @@ const config: TypeOrmModuleOptions = {
   password: 'admin',
   database: 'bvarta',
   entities: [__dirname + '/**/*.entity{.ts,.js}'],
-  synchronize: true,
+  logging: true,
+  synchronize: false,
+  migrationsTableName: 'typeorm_migrations',
+  migrationsRun: false,
 };
 
 export default config;
