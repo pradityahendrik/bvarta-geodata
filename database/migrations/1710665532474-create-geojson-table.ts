@@ -31,6 +31,7 @@ export class CreateGeojsonTable1710665532474 implements MigrationInterface {
                     name: 'deleted_at',
                     type: 'timestamp',
                     default: null,
+                    isNullable: true,
                 },
             ],
         }));

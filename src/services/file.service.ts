@@ -18,7 +18,7 @@ export class FileService {
     }
 
     const geojson = JSON.parse(content);
-    return this.fileRepository.save(geojson);
+    return this.fileRepository.save({ content: geojson });
   }
 
   isGeoJSON(content: string): boolean {

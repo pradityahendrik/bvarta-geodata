@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'geojson' })
 export class GeoJSON {
   @PrimaryGeneratedColumn()
   id: number;
