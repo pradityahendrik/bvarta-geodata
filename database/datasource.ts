@@ -1,5 +1,4 @@
 import { DataSource } from 'typeorm';
-import { join } from 'path';
 
 export const connectionSource = new DataSource({
   type: 'postgres',
@@ -10,7 +9,7 @@ export const connectionSource = new DataSource({
   database: 'bvarta',
   logging: true,
   entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-  migrations: [join(__dirname, '/../../', 'database/migrations/**/*{.ts,.js}')],
+  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   synchronize: false,
   migrationsTableName: 'typeorm_migrations',
   migrationsRun: false,
