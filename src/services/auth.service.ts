@@ -11,7 +11,7 @@ export class AuthService {
   login(username: string, password: string): any {
     const payload = { username, password };
     return {
-      access_token: this.jwtService.sign(payload, { secret: 'bvarta', privateKey: 'bvarta' }),
+      access_token: this.jwtService.sign(payload, { secret: 'bvarta' }),
     };
   }
 }
