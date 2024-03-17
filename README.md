@@ -32,6 +32,18 @@
 $ npm install
 ```
 
+## Seed and Migrations
+
+```bash
+# Create Migrations
+$ npm run migration:create --name=migration-file-name
+```
+
+``` bash
+# Run Migrations
+$ npm run migrate
+```
+
 ## Running the app
 
 ```bash
