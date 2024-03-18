@@ -1,26 +1,31 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { FileController } from './file.controller';
 import { FileService } from '../services/file.service';
+import { AuthGuard } from '../guard/auth.guard'; 
+import { JwtService } from '@nestjs/jwt';
 
 describe('FileController', () => {
   let controller: FileController;
   let fileService: FileService;
+  let authGuard: AuthGuard;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [FileController],
       providers: [
+        JwtService,
         {
           provide: FileService,
           useValue: {
             fileUpload: jest.fn(),
           },
-        },
+        }
       ],
     }).compile();
 
     controller = module.get<FileController>(FileController);
     fileService = module.get<FileService>(FileService);
+    authGuard = module.get<AuthGuard>(AuthGuard);
   });
 
   it('should be defined', () => {
